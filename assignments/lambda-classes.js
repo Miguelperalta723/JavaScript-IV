@@ -10,7 +10,7 @@ class Person {
         return `Hello my name is ${this.name}, I am from ${this.location}`
     }
 }
-// grade receives a student object and a subject string as arguments and logs out '{student.name} receives a perfect score on {subject}'
+
 class Instructors extends Person {
     constructor(instructorProps){
         super(instructorProps)
@@ -24,8 +24,10 @@ class Instructors extends Person {
     grade(student, subject) {
         return `${student.name} receives a perfect score on ${subject}`
     }
+    review(studentName){
+       return studentName.grade = Math.round(Math.random()*100);
+    }
 }
-
 
 class Students extends Person {
     constructor(studentProps){
@@ -33,6 +35,7 @@ class Students extends Person {
         this.previousBackground = studentProps.previousBackground;
         this.className = studentProps.className;
         this.favSubjects = studentProps.favSubjects;
+        this.grade = studentProps.grade;
     }
     listsSubjects(favSubjects) {
         //test
@@ -44,8 +47,14 @@ class Students extends Person {
     sprintChallenge(subject) {
         return `${this.name} has begun sprint challenge on ${subject}`
     }
+    graduate() {
+        if (this.grade > 70){
+            return `your grade is ${this.grade}!, you're ready to graduate!`
+        } else {
+            return `your grade is ${this.grade}, increase your grade above 70 to graduate!`
+        }
+    }
 }
-
 
 class ProjectManagers extends Instructors {
     constructor(PMProps) {
@@ -60,7 +69,6 @@ class ProjectManagers extends Instructors {
         return `${this.name} debugs ${student.name}'s code on ${subject}`
     }
 }
-
 
 //instructor #1
 const phil = new Instructors({
@@ -99,7 +107,8 @@ const zordon = new Students ({
     location: 'Philly',
     previousBackground: 'galactic justice' ,
     className: 'WEB21',
-    favSubjects: ['git','preprocessing','java']
+    favSubjects: ['git','preprocessing','java'],
+    grade: 69
 })
 //student #2
 const alpha = new Students ({
@@ -108,7 +117,8 @@ const alpha = new Students ({
     location: 'London, UK',
     previousBackground: 'waitress',
     className: 'IOS8',
-    favSubjects: ['react','html','testing']
+    favSubjects: ['react','html','testing'],
+    grade: 88
 })
 //Student #3
 const paul = new Students ({
@@ -117,7 +127,8 @@ const paul = new Students ({
     location: 'new jersey',
     previousBackground: 'Skateboarding',
     className: 'WEB19',
-    favSubjects: ['CSS','Javascript','Back-end']
+    favSubjects: ['CSS','Javascript','Back-end'],
+    grade: 99
 })
 
 //PM #1
@@ -170,3 +181,7 @@ console.log(ben.catchPhrase);
 console.log(sam.speak());
 console.log(dave.standUp('pm-channel'));
 console.log(dave.debugsCode(alpha,'react'));
+
+console.log(phil.review(paul));
+console.log(zordon.graduate());
+console.log(paul.graduate());
