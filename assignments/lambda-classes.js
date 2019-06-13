@@ -165,7 +165,6 @@ const dave = new ProjectManagers({
     favInstructor: 'Austen'
 });
 
-console.log('mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm')
 console.log(phil.name);
 console.log(kim.speak());
 console.log(tommy.demo('science'))
